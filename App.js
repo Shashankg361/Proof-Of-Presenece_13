@@ -10,15 +10,17 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false,}}>
-        <Stack.Screen 
+      <Stack.Screen 
           name="Profile"
           component={profile}
           options={{title: "Welcome"}}
         />
-        <Stack.Screen 
+      <Stack.Screen 
           name="Presence"
           component={presence}
         />
+       
+      
       
       </Stack.Navigator>
     </NavigationContainer>
