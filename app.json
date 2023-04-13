@@ -2,6 +2,7 @@
   "expo": {
     "name": "proof-Of-Presence",
     "slug": "proof-Of-Presence",
+    "scheme": "yourscheme",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,9 +16,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier":"com.bankai.proof-Of-Presence",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "1015424454227-1ahfo4nnjigd68rojnnhe74qo5r4ir9q.apps.googleusercontent.com",
+          "clientId":"1015424454227-1ahfo4nnjigd68rojnnhe74qo5r4ir9q.apps.googleusercontent.com"
+        }
+      }
     },
     "android": {
+      "package":"com.bankai.proof-Of-Presence",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "1015424454227-mmoob6qurg5cc3rcclioie0d5glmm5so.apps.googleusercontent.com",
+          "clientId":"1015424454227-1ahfo4nnjigd68rojnnhe74qo5r4ir9q.apps.googleusercontent.com"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
