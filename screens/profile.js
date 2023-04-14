@@ -16,9 +16,10 @@ WebBrowser.maybeCompleteAuthSession();
 export default function Profile({ navigation }) {
 
   const [accessToken,setAccessToken] = React.useState(null);
-  const [user,setUser] = React.useState(''); 
-  const [request,response , promptAsync] = Google.useIdTokenAuthRequest(
+  const [user,setUser] = React.useState(null); 
+  const [request,response , promptAsync] = Google.useAuthRequest(
     {
+      clientId:"1015424454227-b10oo09c5i2j0pgoqtsvqsn1ftr8ond9.apps.googleusercontent.com",
       iosClientId:"1015424454227-1ahfo4nnjigd68rojnnhe74qo5r4ir9q.apps.googleusercontent.com",
       androidClientId:"1015424454227-mmoob6qurg5cc3rcclioie0d5glmm5so.apps.googleusercontent.com"
     }
@@ -42,13 +43,13 @@ export default function Profile({ navigation }) {
 
 
 
-  const showUserInfo = ()=>{
+  const ShowUserInfo = ()=>{
     if(user){
       return (
 
         <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
           <Text style={{fontSize:35, fontWeight:"bold",marginBottom:20}}>Welcome!!</Text>
-          <image source={{uri: user.picture}} style={{width:100,height:100,border:5}}/>
+          <Image source={{uri: user.picture}} style={{width:100,height:100,border:5}}/>
           <Text style={{fontSize:20,fontWeight:'bold'}}>{user.name}</Text>
 
           <TouchableOpacity   style={styles.button}
@@ -68,7 +69,7 @@ export default function Profile({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {user && <showUserInfo /> }
+      {user && <ShowUserInfo /> }
         
       {user === null &&
           <>
@@ -80,12 +81,13 @@ export default function Profile({ navigation }) {
             promptAsync();
             }} 
         >
-          <Image source={require("./btn.png")} style={{width: 300, height: 40}} />
+          <View style={{borderColor:"black",borderWidth:3,}}>
+            <Image source={require("./btn.png")} style={{width: 300, height: 40}} />
+          </View>
+          
         </TouchableOpacity>
         </>
       }  
-     
-     
     </View>
     );
     
@@ -94,6 +96,7 @@ export default function Profile({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    color:'#D3D3D3',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
@@ -106,6 +109,12 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 15,
 
-  }
+  },
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
  
 });
